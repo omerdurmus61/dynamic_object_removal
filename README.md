@@ -2,6 +2,8 @@
 
 Dynamic Object Removal is a ROS2 package that removes dynamic objects from a point cloud by using a cropping technique. This node subscribes to a point cloud topic and a detected objects topic, synchronizes the incoming messages, and then performs object removal based on the detected object's pose and dimensions. The resulting point cloud with removed objects is then published as output.
 
+Note: The message types used in the original package have been updated from autoware_auto_perception_msgs to autoware_perception_msgs to ensure compatibility with the current Autoware ecosystem.
+
 ## Table of Contents
 
 - [Prerequisites](#prerequisites)
