@@ -26,7 +26,7 @@ cd ~/autoware/src/universe/external/
 git clone https://github.com/davutcanakbas/dynamic_object_removal.git
 cd ~/autoware/
 rosdep install -y --from-paths src --ignore-src --rosdistro $ROS_DISTRO
-colcon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=Release --packages-up-to dynamic-object-removal
+colcon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=Release --packages-up-to dynamic_object_removal
 ```
 
 ## Usage
@@ -34,7 +34,7 @@ Run the dynamic_object_removal node by executing:
 
 ```bash
 ros2 launch lidar_centerpoint lidar_centerpoint.launch.xml
-ros2 launch  dynamic_object_removal dynamic_object_removal_default.launch.xml demo:=true
+ros2 launch  dynamic_object_removal dynamic_object_removal.launch.xml 
 ```
 
 Make sure to have the required topics for point cloud and detected objects(lidar_centerpoint) available. The node will subscribe to these topics and perform dynamic object removal.
