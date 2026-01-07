@@ -11,7 +11,7 @@ DynamicObjectRemoval::DynamicObjectRemoval() : Node("dynamic_object_removal_node
 
   // Synchronize the incoming messages
   typedef message_filters::sync_policies::ApproximateTime<sensor_msgs::msg::PointCloud2,
-                                                          autoware_auto_perception_msgs::msg::DetectedObjects>
+                                                          autoware_perception_msgs::msg::DetectedObjects>
       MySyncPolicy;
   sync_ = std::make_shared<message_filters::Synchronizer<MySyncPolicy>>(MySyncPolicy(10), pcl_sub_, obj_sub_);
   sync_->registerCallback(&DynamicObjectRemoval::callback, this);
@@ -20,7 +20,7 @@ DynamicObjectRemoval::DynamicObjectRemoval() : Node("dynamic_object_removal_node
 // Callback function
 void DynamicObjectRemoval::callback(
     const std::shared_ptr<const sensor_msgs::msg::PointCloud2>& pcl_msg,
-    const std::shared_ptr<const autoware_auto_perception_msgs::msg::DetectedObjects>& obj_msg)
+    const std::shared_ptr<const autoware_perception_msgs::msg::DetectedObjects>& obj_msg)
 {
   // Convert ROS2 PointCloud2 to PCL PointCloud
   std::shared_ptr<sensor_msgs::msg::PointCloud2> pointcloud2_msg (new sensor_msgs::msg::PointCloud2);

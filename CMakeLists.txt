@@ -5,7 +5,7 @@ project(dynamic_object_removal)
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(sensor_msgs REQUIRED)
-find_package(autoware_auto_perception_msgs REQUIRED)
+find_package(autoware_perception_msgs REQUIRED)
 find_package(message_filters REQUIRED)
 find_package(autoware_cmake REQUIRED)
 find_package(PCL 1.8 REQUIRED)
@@ -32,7 +32,7 @@ ament_auto_add_executable(dynamic_object_removal
 ament_target_dependencies(dynamic_object_removal
   rclcpp
   sensor_msgs
-  autoware_auto_perception_msgs
+  autoware_perception_msgs
   message_filters
   pcl_conversions
   tf2

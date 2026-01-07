@@ -2,8 +2,8 @@
 <launch>
   <arg name="demo" default="false" />
 
-  <arg name="input/pointcloud" default="/kitti/point_cloud" description="input point cloud topic"/>
-  <arg name="input/objects" default="/objects" description="input objects topic"/>
+  <arg name="input/pointcloud" default="/sensing/lidar/concatenated/pointcloud" description="input point cloud topic"/>
+  <arg name="input/objects" default="/perception/object_recognition/detection/centerpoint/objects" description="input objects topic"/>
 
   <arg name="output/pointcloud" default="/dynamic_object_removal/output" description="output: cleared point cloud topic"/>
 

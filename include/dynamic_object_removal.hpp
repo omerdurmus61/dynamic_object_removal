@@ -4,7 +4,7 @@
 // ROS2 headers
 #include <rclcpp/rclcpp.hpp>
 #include "sensor_msgs/msg/point_cloud2.hpp"
-#include "autoware_auto_perception_msgs/msg/detected_objects.hpp"
+#include "autoware_perception_msgs/msg/detected_objects.hpp"
 #include "geometry_msgs/msg/pose.hpp"
 
 // Message filters for synchronizing topics
@@ -32,7 +32,7 @@ public:
 
   // Callback for synchronized messages
   void callback(const std::shared_ptr<const sensor_msgs::msg::PointCloud2>& pcl_msg,
-                const std::shared_ptr<const autoware_auto_perception_msgs::msg::DetectedObjects>& obj_msg);
+                const std::shared_ptr<const autoware_perception_msgs::msg::DetectedObjects>& obj_msg);
 
   // Function to remove objects using CropBox
   void objectRemoveCropBox(pcl::PCLPointCloud2::Ptr crop_cloud, const Eigen::Vector4f min_point,
@@ -41,13 +41,13 @@ public:
 private:
   // Subscribers for point cloud and detected objects
   message_filters::Subscriber<sensor_msgs::msg::PointCloud2> pcl_sub_;
-  message_filters::Subscriber<autoware_auto_perception_msgs::msg::DetectedObjects> obj_sub_;
+  message_filters::Subscriber<autoware_perception_msgs::msg::DetectedObjects> obj_sub_;
 
   pcl::CropBox<pcl::PCLPointCloud2> ObjectRemoveCrop;
 
   // Synchronizer for the above subscribers
   std::shared_ptr<message_filters::Synchronizer<message_filters::sync_policies::ApproximateTime<
-      sensor_msgs::msg::PointCloud2, autoware_auto_perception_msgs::msg::DetectedObjects>>>
+      sensor_msgs::msg::PointCloud2, autoware_perception_msgs::msg::DetectedObjects>>>
       sync_;
 };
 
